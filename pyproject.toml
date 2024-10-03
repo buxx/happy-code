@@ -1,0 +1,11 @@
+[tool.mypy]
+exclude = ".venv"
+python_version = 3.12
+allow_redefinition = true
+strict_optional = true
+show_error_codes = true
+show_column_numbers = true
+warn_no_return = true
+disallow_any_unimported = true
+strict = true
+implicit_reexport = false

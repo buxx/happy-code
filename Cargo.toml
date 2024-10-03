@@ -1,0 +1,10 @@
+[package]
+name = "happy-code"
+version = "0.1.0"
+edition = "2021"
+
+[[bin]]
+name = "enum"
+path = "src/bin/enum/enum.rs"
+
+[dependencies]
