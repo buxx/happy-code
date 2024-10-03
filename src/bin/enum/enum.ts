@@ -1,27 +1,15 @@
+// npm install ts-pattern
+import { match } from "ts-pattern";
 
+type Action = {
+  type: "start" | "pause" | "stop";
+  playlistId?: number
+};
 
-class Start { constructor(public playlistId: number){} };
-class Pause { };
-class Stop { };
+const action: Action = { type: "start", playlistId: 42 };
 
-type Action = Start | Pause | Stop;
-  
-function main() {
-    // [...]
-    const action = new Start(42);
-    // [...]
-
-    switch (action.constructor) {
-        case Start:
-            console.log(`Start playlist ${action.playlistId}`)
-        break;
-        case Pause:
-            console.log(`Pause`)
-        break;
-        case Stop:
-            console.log(`Stop`)
-        break;
-    }
-}
-
-main()
+match(action)
+  .with({ type: "start" }, () => console.log(`Start playlist ${action.playlistId}`))
+  .with({ type: "pause" }, () => console.log(`Pause`))
+  .with({ type: "stop" }, () => console.log(`Stop`))
+  .exhaustive();
